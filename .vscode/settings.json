@@ -1,3 +1,29 @@
 {
-    "python.pythonPath": "C:\\Users\\ryan\\anaconda3\\envs\\django_blog\\python.exe"
+    "python.pythonPath": "C:\\Users\\ryan\\anaconda3\\envs\\django_blog\\python.exe",
+    "python.testing.pytestArgs": [
+        "pytest"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.nosetestsEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "python.testing.unittestArgs": [
+        "-v",
+        "-s",
+        "./pytest",
+        "-p",
+        "*_test.py"
+    ],
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/__pycache__": true,
+        "**/*.pyc": {"when": "$(basename).py"},
+        ".pytest_cache": true 
+    },
+    "[html]": {
+        "editor.defaultFormatter": "vscode.html-language-features"
+    }
 }
