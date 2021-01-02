@@ -47,9 +47,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     # 'livesync',  # must be before django.contrib.staticfiles
     'django.contrib.staticfiles',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -57,8 +59,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
     # 'livesync.core.middleware.DjangoLiveSyncMiddleware',
 ]
+
 
 ROOT_URLCONF = 'django_project.urls'
 
@@ -76,6 +80,10 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+INTERNAL_IPS = [
+    '127.0.0.1'
 ]
 
 WSGI_APPLICATION = 'django_project.wsgi.application'
@@ -132,3 +140,6 @@ STATIC_URL = '/static/'
 
 # since crispy default to bootstrap 2 we set it to 4 here
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+LOGIN_REDIRECT_URL = 'blog-home'
+

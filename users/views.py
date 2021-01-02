@@ -19,8 +19,9 @@ def register(request):
             # validated data is in a cleaned_data dictionary
             form.save()
             username = form.cleaned_data.get('username')
+            # flash message
             messages.success(request, f'Account created for {username}!')
-            return redirect('blog-home')
+            return redirect('login')
 
         # if form is invalid, it renders the form again with the values
     else:
