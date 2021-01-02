@@ -38,6 +38,8 @@ ALLOWED_HOSTS = []
 # add here everytime you add a new app (this is the place django looks for app's templates and models)
 INSTALLED_APPS = [
     'blog.apps.BlogConfig',
+    'users.apps.UsersConfig',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -127,3 +129,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# since crispy default to bootstrap 2 we set it to 4 here
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
