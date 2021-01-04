@@ -45,9 +45,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'livereload',  # django-livereload-server for dev server reload on changes
     # 'livesync',  # must be before django.contrib.staticfiles
     'django.contrib.staticfiles',
-    'debug_toolbar',
+    'debug_toolbar',  # django debug toolbar
 ]
 
 MIDDLEWARE = [
@@ -59,7 +60,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-
+    'livereload.middleware.LiveReloadScript'
     # 'livesync.core.middleware.DjangoLiveSyncMiddleware',
 ]
 
@@ -138,8 +139,19 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+# full path to a dir where we want django to store uploaded files
+# django_project/media/
+# profile_pics dir will be created inside the media dir
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# public url of that media_root dir
+MEDIA_URL = '/media/'
+
 # since crispy default to bootstrap 2 we set it to 4 here
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'blog-home'
 
+# by default django looks for login route at accounts/login - but ours is just at login (no account/)
+# login is the name of the project urls.py path for login
+LOGIN_URL = 'login'

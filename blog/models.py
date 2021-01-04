@@ -1,11 +1,15 @@
 from django.contrib.auth.models import User
+from django.contrib.messages.api import debug
 from django.db import models
+from django.urls import reverse
 from django.utils import timezone
 
 # Create your models here.
 
 
 # Posts - posts themselves
+# Users - authors of posts
+# django already has a users
 class Post(models.Model):
     title = models.CharField(max_length=100)  # CharField is up to 255 char
     content = models.TextField()  # Textfield has up to 4GB
@@ -21,5 +25,10 @@ class Post(models.Model):
 
     def __str__(self) -> str:
         return self.title
-# Users - authors of posts
-# django already has a users
+
+    # tell django how to find location to post detail
+
+    # def get_absolute_url(self):
+    #     # redirect - redirects you to specific route
+    #     # reverse - return full url as string (and let view handle redirect )
+    #     return reverse("post_detail", kwargs={"pk": self.pk})
