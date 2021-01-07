@@ -28,7 +28,7 @@ class Post(models.Model):
 
     # tell django how to find location to post detail
 
-    # def get_absolute_url(self):
-    #     # redirect - redirects you to specific route
-    #     # reverse - return full url as string (and let view handle redirect )
-    #     return reverse("post_detail", kwargs={"pk": self.pk})
+    def get_absolute_url(self):
+        # redirect - redirects you to specific route
+        # reverse - return full url as string (and let view handle redirect )
+        return reverse("post-detail", kwargs={"pk": self.pk})

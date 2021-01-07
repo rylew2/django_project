@@ -31,7 +31,7 @@ SECRET_KEY = str(os.getenv('SECRET_KEY'))
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['73.170.61.130', '45.33.51.8', 'localhost']
 
 
 # Application definition
@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     # 'livesync',  # must be before django.contrib.staticfiles
     'django.contrib.staticfiles',
     'debug_toolbar',  # django debug toolbar
+    'storages'
 ]
 
 MIDDLEWARE = [
@@ -155,3 +156,30 @@ LOGIN_REDIRECT_URL = 'blog-home'
 # by default django looks for login route at accounts/login - but ours is just at login (no account/)
 # login is the name of the project urls.py path for login
 LOGIN_URL = 'login'
+
+
+#####################
+# EMAIL
+##############################
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = os.getenv('GOOGLE_EMAIL')
+EMAIL_HOST_PASSWORD = os.getenv('GOOGLE_APP_PW')
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'default from email'
+
+#####################
+# AWS
+##############################
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+AWS_DEFAULT_REGION = os.environ.get('AWS_DEFAULT_REGION')
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+
+# If user uploads file with existing filename, we don't want it to overwrite (it will rename upload by default)
+AWS_S3_FILE_OVERITE = False
+AWS_DEFAULT_ACL = None
+
+# from django-storages documentation
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'

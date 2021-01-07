@@ -1,0 +1,14 @@
+name: django_blog
+channels:
+  - defaults
+dependencies:
+  - django
+  - autopep8
+  - pytest
+  - requests
+  - pillow
+  - python-dotenv
+  - django-crispy-forms
+  - django-livereload-server
+  - django-debug-toolbar
+prefix: C:\Users\ryan\anaconda3\envs\django_blog
