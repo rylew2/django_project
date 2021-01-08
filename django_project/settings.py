@@ -26,12 +26,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = str(os.getenv('SECRET_KEY'))
+SECRET_KEY = str(os.environ.get('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['73.170.61.130', '45.33.51.8', 'localhost']
+ALLOWED_HOSTS = ['73.170.61.130', '45.33.51.8',
+                 'localhost', 'rydjangoapp.herokuapp.com']
 
 
 # Application definition
@@ -163,8 +164,8 @@ LOGIN_URL = 'login'
 ##############################
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = os.getenv('GOOGLE_EMAIL')
-EMAIL_HOST_PASSWORD = os.getenv('GOOGLE_APP_PW')
+EMAIL_HOST_USER = os.environ.get('GOOGLE_EMAIL')
+EMAIL_HOST_PASSWORD = os.environ.get('GOOGLE_APP_PW')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'default from email'
@@ -172,10 +173,16 @@ DEFAULT_FROM_EMAIL = 'default from email'
 #####################
 # AWS
 ##############################
+# AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+# AWS_DEFAULT_REGION = os.environ.get('AWS_DEFAULT_REGION')
+# AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 AWS_DEFAULT_REGION = os.environ.get('AWS_DEFAULT_REGION')
 AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
+
 
 # If user uploads file with existing filename, we don't want it to overwrite (it will rename upload by default)
 AWS_S3_FILE_OVERITE = False
