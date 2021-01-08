@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import os
 from pathlib import Path
 
+import django_heroku
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -190,3 +191,8 @@ AWS_DEFAULT_ACL = None
 
 # from django-storages documentation
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+# automatically configures postgres in heroku
+# autoconfigures db url, connecting static assets to gunicorn (via whitenoise),
+# might also take care of secret key and allowed hosts (though we did this ourselves)
+django_heroku.settings(locals())
